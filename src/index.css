@@ -3,6 +3,9 @@
 :root {
   --primary-color: #ec4899; /* Pink-500 */
   --primary-hover: #db2777; /* Pink-600 */
+  --danger-color: #f87171; /* Red-400 */
+  --warning-color: #fcd34d; /* Amber-300 */
+  --box-color: #f472b6; /* Pink-400 */
   --vh: 100vh;
 }
 
@@ -10,6 +13,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #fdf2f8; /* Pink-50 */
   /* Remove overflow: hidden to allow scrolling */
 }
 
@@ -30,7 +34,11 @@ body {
   min-height: 100vh; /* Change to min-height instead of fixed height */
   min-height: var(--vh);
 }
-
+.konvajs-content {
+  background-color: #fce7f3; /* Pink-100 */
+  border: 1px solid #f9a8d4; /* Pink-300 */
+  border-radius: 8px;
+}
 /* Make containers scrollable */
 .overflow-container {
   overflow-y: auto;
@@ -62,4 +70,56 @@ body {
 .overflow-x-auto::-webkit-scrollbar-thumb {
   background-color: rgba(236, 72, 153, 0.5); /* Pink-500 with opacity */
   border-radius: 4px;
+}
+/* Button styles */
+button:focus, 
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.4);
+}
+
+/* Animated transitions */
+.transition-all {
+  transition: all 0.2s ease;
+}
+
+/* Focus rings */
+.focus-ring:focus {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--primary-color);
+  outline: none;
+}
+
+/* Placeholder animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #831843;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 100;
+  margin-bottom: 4px;
 }
